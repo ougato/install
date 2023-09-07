@@ -18,8 +18,7 @@ readonly MAX_ERROR_COUNT=3
 input_count=0
 
 print_help() {
-    for item in "${HELP_TIPS[@]}"
-    do
+    for item in "${HELP_TIPS[@]}"; do
         echo "$item"
     done
 }
@@ -30,7 +29,7 @@ install() {
 }
 
 remove() {
-    pip3 uninstall docker-compose
+    rm /usr/local/bin/ctop
 }
 
 input_option() {
