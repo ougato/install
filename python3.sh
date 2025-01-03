@@ -1,7 +1,7 @@
 #!/bin/bash
 
-#/bin/bash -c "$(curl -fsSL https://file.icerror.top:8443/d/install/python3.sh)" -s i
-#/bin/bash -c "$(curl -fsSL https://file.icerror.top:8443/d/install/python3.sh)" -s r
+#/bin/bash -c "$(curl -fsSL "https://raw.githubusercontent.com/ougato/install/refs/heads/master/python3.sh)" -s i
+#/bin/bash -c "$(curl -fsSL "https://raw.githubusercontent.com/ougato/install/refs/heads/master/python3.sh)" -s r
 
 readonly INSTALL="i"
 readonly REMOVE="r"
@@ -12,8 +12,8 @@ readonly DEPEND_LIST=(
     python3
 )
 readonly HELP_TIPS=(
-    "i：安装"
-    "r：卸载后移除所有安装项"
+    "i: 安装"
+    "r: 卸载后移除所有安装项"
 )
 # 最大输入错误次数
 readonly MAX_ERROR_COUNT=3
@@ -35,7 +35,7 @@ install() {
         fi
     done
     if [ ! "$(command -v pip3)" ]; then
-        read -r -p "未安装 pip3 是否安装 [y/n]：" is_install
+        read -r -p "未安装 pip3 是否安装 [y/n]: " is_install
         if [ "$is_install" == "Y" ] || [ "$is_install" == "y" ]; then
             /bin/bash -c "$(curl -fsSL ${HOST}/pip3.sh)" -s i
         fi
@@ -54,7 +54,7 @@ remove() {
 
 input_option() {
     ((input_count++)) || true
-    read -r -p "输入选项：" option
+    read -r -p "输入选项: " option
     main "$option"
 }
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 
-#/bin/bash -c "$(curl -fsSL https://file.icerror.top:8443/d/install/pip3.sh)" -s i
-#/bin/bash -c "$(curl -fsSL https://file.icerror.top:8443/d/install/pip3.sh)" -s r
+#/bin/bash -c "$(curl -fsSL "https://raw.githubusercontent.com/ougato/install/refs/heads/master/pip3.sh)" -s i
+#/bin/bash -c "$(curl -fsSL "https://raw.githubusercontent.com/ougato/install/refs/heads/master/pip3.sh)" -s r
 
 readonly INSTALL="i"
 readonly REMOVE="r"
@@ -12,8 +12,8 @@ readonly DEPEND_LIST=(
     python3-pip
 )
 readonly HELP_TIPS=(
-    "i：安装"
-    "r：卸载后移除所有安装项"
+    "i: 安装"
+    "r: 卸载后移除所有安装项"
 )
 readonly INDEX_URL=(
     # 阿里云
@@ -59,10 +59,10 @@ write_repo() {
 }
 
 set_repo() {
-    echo "0：阿里云"
-    echo "1：清华大学"
-    echo "2：科技大学"
-    read -r -p "输入国内源选项：" option
+    echo "0: 阿里云"
+    echo "1: 清华大学"
+    echo "2: 科技大学"
+    read -r -p "输入国内源选项: " option
     
     if [ "$option" == "0" ] ||
         [ "$option" == "1" ] ||
@@ -76,7 +76,7 @@ set_repo() {
 }
 
 upgrade_pip3() {
-    read -r -p "是否升级 pip3 [y/n]：" is_upgrade
+    read -r -p "是否升级 pip3 [y/n]: " is_upgrade
     if [ "$is_upgrade" == "Y" ] || [ "$is_upgrade" == "y" ]; then
         python3 -m pip install --upgrade pip
     fi
@@ -105,7 +105,7 @@ remove() {
 
 input_option() {
     ((input_count++)) || true
-    read -r -p "输入选项：" option
+    read -r -p "输入选项: " option
     main "$option"
 }
 

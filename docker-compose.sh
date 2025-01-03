@@ -1,16 +1,16 @@
 #!/bin/bash
 
-#/bin/bash -c "$(curl -fsSL https://file.icerror.top:8443/d/install/docker-compose.sh)" -s i
-#/bin/bash -c "$(curl -fsSL https://file.icerror.top:8443/d/install/docker-compose.sh)" -s r
+#/bin/bash -c "$(curl -fsSL "https://raw.githubusercontent.com/ougato/install/refs/heads/master/docker-compose.sh)" -s i
+#/bin/bash -c "$(curl -fsSL "https://raw.githubusercontent.com/ougato/install/refs/heads/master/docker-compose.sh)" -s r
 
 # 安装路径
-readonly HOST="https://file.icerror.top:8443/d"
+readonly HOST="https://raw.githubusercontent.com/ougato/install/refs/heads/master"
 
 readonly INSTALL="i"
 readonly REMOVE="r"
 readonly HELP_TIPS=(
-    "i：安装"
-    "r：卸载后移除所有安装项"
+    "i: 安装"
+    "r: 卸载后移除所有安装项"
 )
 # 最大输入错误次数
 readonly MAX_ERROR_COUNT=3
@@ -25,8 +25,8 @@ print_help() {
 }
 
 install() {
-    /bin/bash -c "$(curl -fsSL ${HOST}/install/python3.sh)" -s i
-    /bin/bash -c "$(curl -fsSL ${HOST}/install/pip3.sh)" -s i
+    /bin/bash -c "$(curl -fsSL ${HOST}/python3.sh)" -s i
+    /bin/bash -c "$(curl -fsSL ${HOST}/pip3.sh)" -s i
     pip3 install docker-compose
 }
 
@@ -36,7 +36,7 @@ remove() {
 
 input_option() {
     ((input_count++)) || true
-    read -r -p "输入选项：" option
+    read -r -p "输入选项: " option
     main "$option"
 }
 

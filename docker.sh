@@ -1,10 +1,10 @@
 #!/bin/bash
 
-#/bin/bash -c "$(curl -fsSL https://file.icerror.top:8443/d/install/docker.sh)" -s i
-#/bin/bash -c "$(curl -fsSL https://file.icerror.top:8443/d/install/docker.sh)" -s r
+#/bin/bash -c "$(curl -fsSL "https://raw.githubusercontent.com/ougato/install/refs/heads/master/docker.sh)" -s i
+#/bin/bash -c "$(curl -fsSL "https://raw.githubusercontent.com/ougato/install/refs/heads/master/docker.sh)" -s r
 
 # 安装路径
-readonly HOST="https://file.icerror.top:8443/d"
+readonly HOST="https://raw.githubusercontent.com/ougato/install/refs/heads/master"
 
 readonly INSTALL="i"
 readonly REMOVE="r"
@@ -32,8 +32,8 @@ readonly DEPEND_LIST=(
     docker-compose-plugin
 )
 readonly HELP_TIPS=(
-    "i：安装后添加到开机启动"
-    "r：卸载后移除所有安装项"
+    "i: 安装后添加到开机启动"
+    "r: 卸载后移除所有安装项"
 )
 # 最大输入错误次数
 readonly MAX_ERROR_COUNT=3
@@ -55,11 +55,11 @@ remove_old() {
 }
 
 install_docker_compose() {
-    /bin/bash -c "$(curl -fsSL ${HOST}/install/docker-compose.sh)" -s i
+    /bin/bash -c "$(curl -fsSL ${HOST}/docker-compose.sh)" -s i
 }
 
 remove_docker_compose() {
-    /bin/bash -c "$(curl -fsSL ${HOST}/install/docker-compose.sh)" -s r
+    /bin/bash -c "$(curl -fsSL ${HOST}/docker-compose.sh)" -s r
 }
 
 install() {
@@ -77,7 +77,7 @@ install() {
     systemctl enable docker
 
     if [ ! "$(command -v docker-compose)" ]; then
-        read -r -p "未安装 docker-compose 是否安装 [y/n]：" is_install
+        read -r -p "未安装 docker-compose 是否安装 [y/n]: " is_install
         if [ "$is_install" == "Y" ] || [ "$is_install" == "y" ]; then
             install_docker_compose
         fi
@@ -103,7 +103,7 @@ remove() {
 
 input_option() {
     ((input_count++)) || true
-    read -r -p "输入选项：" option
+    read -r -p "输入选项: " option
     main "$option"
 }
 

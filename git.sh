@@ -1,10 +1,10 @@
 #!/bin/bash
 
-#/bin/bash -c "$(curl -fsSL https://file.icerror.top:8443/d/install/git.sh)" -s i
-#/bin/bash -c "$(curl -fsSL https://file.icerror.top:8443/d/install/git.sh)" -s r
+#/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/ougato/install/refs/heads/master/git.sh)" -s i
+#/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/ougato/install/refs/heads/master/git.sh)" -s r
 
 # 安装路径
-readonly HOST="https://file.icerror.top:8443/d"
+readonly HOST="https://raw.githubusercontent.com/ougato/install/refs/heads/master"
 
 readonly INSTALL="i"
 readonly REMOVE="r"
@@ -15,8 +15,8 @@ readonly DEPEND_LIST=(
     git
 )
 readonly HELP_TIPS=(
-    "i：安装"
-    "r：卸载后移除所有安装项"
+    "i: 安装"
+    "r: 卸载后移除所有安装项"
 )
 # 最大输入错误次数
 readonly MAX_ERROR_COUNT=3
@@ -31,11 +31,11 @@ print_help() {
 }
 
 install_zsh() {
-    /bin/bash -c "$(curl -fsSL ${HOST}/install/oh-my-zsh.sh)" -s i
+    /bin/bash -c "$(curl -fsSL ${HOST}/oh-my-zsh.sh)" -s i
 }
 
 remove_zsh() {
-    /bin/bash -c "$(curl -fsSL ${HOST}/install/oh-my-zsh.sh)" -s r
+    /bin/bash -c "$(curl -fsSL ${HOST}/oh-my-zsh.sh)" -s r
 }
 
 install() {
@@ -45,7 +45,7 @@ install() {
         fi
     done
     if [ ! "$(command -v zsh)" ] || [ ! -d "$HOME/.oh-my-zsh" ] || [ ! -f "$HOME/.zshrc" ]; then
-        read -r -p "未安装 zsh 是否安装 [y/n]：" is_install
+        read -r -p "未安装 zsh 是否安装 [y/n]: " is_install
         if [ "$is_install" == "Y" ] || [ "$is_install" == "y" ]; then
             install_zsh
         fi
@@ -54,7 +54,7 @@ install() {
 
 remove() {
     if [ "$(command -v zsh)" ]; then
-        read -r -p "已安装 zsh 是否卸载 [y/n]：" is_remove
+        read -r -p "已安装 zsh 是否卸载 [y/n]: " is_remove
         if [ "$is_remove" == "Y" ] || [ "$is_remove" == "y" ]; then
             remove_zsh
         fi
@@ -68,7 +68,7 @@ remove() {
 
 input_option() {
     ((input_count++)) || true
-    read -r -p "输入选项：" option
+    read -r -p "输入选项: " option
     main "$option"
 }
 

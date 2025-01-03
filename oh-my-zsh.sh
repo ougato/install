@@ -43,17 +43,8 @@ install() {
         mv ~/.oh-my-zsh ~/.oh-my-zsh-backup
     fi
 
-    git clone --depth 1 https://github.com/ougato/install.git ~/.oh-my-zsh
+    sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-    if [ -f "$HOME/.zshrc.backup" ]; then
-        rm -f ~/.zshrc.backup
-    fi
-    if [ -f "$HOME/.zshrc" ]; then
-        mv ~/.zshrc ~/.zshrc.backup
-    fi
-    cp ~/.oh-my-zsh/templates/zshrc.zsh-template ~/.zshrc
-
-    exec chsh -s "$(which zsh)"
 }
 
 remove() {
@@ -84,7 +75,7 @@ remove() {
 
 input_option() {
     ((input_count++)) || true
-    read -r -p "输入选项：" option
+    read -r -p "输入选项: " option
     main "$option"
 }
 
