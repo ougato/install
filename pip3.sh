@@ -90,7 +90,7 @@ install() {
         fi
     done
     
-    set_repo
+    # set_repo
     upgrade_pip3
 }
 
