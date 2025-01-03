@@ -1,7 +1,7 @@
 #!/bin/bash
 
-#/bin/bash -c "$(curl -fsSL "https://raw.githubusercontent.com/ougato/install/refs/heads/master/gogs.sh)" -s i
-#/bin/bash -c "$(curl -fsSL "https://raw.githubusercontent.com/ougato/install/refs/heads/master/gogs.sh)" -s r
+#/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/ougato/install/refs/heads/master/gogs.sh)" -s i
+#/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/ougato/install/refs/heads/master/gogs.sh)" -s r
 
 # 安装路径
 readonly HOST="https://raw.githubusercontent.com/ougato/install/refs/heads/master"
