@@ -70,7 +70,7 @@ install() {
         fi
     done
 
-    yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
+    # yum-config-manager --add-repo http://mirrors.aliyun.com/docker-ce/linux/centos/docker-ce.repo
 
     sleep 1
     systemctl start docker
