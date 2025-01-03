@@ -1,7 +1,7 @@
 #!/bin/bash
 
-#/bin/bash -c "$(curl -fsSL https://file.ougato.com:8443/d/install/pip3.sh)" -s i
-#/bin/bash -c "$(curl -fsSL https://file.ougato.com:8443/d/install/pip3.sh)" -s r
+#/bin/bash -c "$(curl -fsSL https://file.icerror.top:8443/d/install/pip3.sh)" -s i
+#/bin/bash -c "$(curl -fsSL https://file.icerror.top:8443/d/install/pip3.sh)" -s r
 
 readonly INSTALL="i"
 readonly REMOVE="r"

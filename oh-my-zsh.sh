@@ -1,7 +1,7 @@
 #!/bin/bash
 
-#/bin/bash -c "$(curl -fsSL https://file.ougato.com:8443/d/install/oh-my-zsh.sh)" -s i
-#/bin/bash -c "$(curl -fsSL https://file.ougato.com:8443/d/install/oh-my-zsh.sh)" -s r
+#/bin/bash -c "$(curl -fsSL https://file.icerror.top:8443/d/install/oh-my-zsh.sh)" -s i
+#/bin/bash -c "$(curl -fsSL https://file.icerror.top:8443/d/install/oh-my-zsh.sh)" -s r
 
 readonly INSTALL="i"
 readonly REMOVE="r"
@@ -43,7 +43,7 @@ install() {
         mv ~/.oh-my-zsh ~/.oh-my-zsh-backup
     fi
 
-    git clone --depth 1 https://gogs.ougato.com:8443/gogs/oh-my-zsh.git ~/.oh-my-zsh
+    git clone --depth 1 https://gogs.icerror.top:8443/gogs/oh-my-zsh.git ~/.oh-my-zsh
 
     if [ -f "$HOME/.zshrc.backup" ]; then
         rm -f ~/.zshrc.backup

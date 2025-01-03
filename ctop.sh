@@ -1,10 +1,10 @@
 #!/bin/bash
 
-#/bin/bash -c "$(curl -fsSL https://file.ougato.com:8443/d/install/ctop.sh)" -s i
-#/bin/bash -c "$(curl -fsSL https://file.ougato.com:8443/d/install/ctop.sh)" -s r
+#/bin/bash -c "$(curl -fsSL https://file.icerror.top:8443/d/install/ctop.sh)" -s i
+#/bin/bash -c "$(curl -fsSL https://file.icerror.top:8443/d/install/ctop.sh)" -s r
 
 # 安装路径
-readonly HOST="https://file.ougato.com:8443/d"
+readonly HOST="https://file.icerror.top:8443/d"
 
 readonly INSTALL="i"
 readonly REMOVE="r"
@@ -24,7 +24,7 @@ print_help() {
 }
 
 install() {
-    wget https://file.ougato.com:8443/d/package/linux/centos/ctop-0.7.7-linux-amd64 -O /usr/local/bin/ctop
+    wget "${HOST}/package/linux/centos/ctop-0.7.7-linux-amd64" -O /usr/local/bin/ctop
     chmod +x /usr/local/bin/ctop
 }
 

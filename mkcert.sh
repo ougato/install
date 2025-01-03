@@ -1,15 +1,15 @@
 #!/bin/bash
 
-#/bin/bash -c "$(curl -fsSL https://file.icerror.top:8443/d/install/python3.sh)" -s i
-#/bin/bash -c "$(curl -fsSL https://file.icerror.top:8443/d/install/python3.sh)" -s r
+#/bin/bash -c "$(curl -fsSL https://file.icerror.top:8443/d/install/mkcert.sh)" -s i
+#/bin/bash -c "$(curl -fsSL https://file.icerror.top:8443/d/install/mkcert.sh)" -s r
+
+# 安装路径
+readonly HOST="https://file.icerror.top:8443/d"
 
 readonly INSTALL="i"
 readonly REMOVE="r"
-readonly REMOVE_LIST=(
-    python3
-)
 readonly DEPEND_LIST=(
-    python3
+    nss-tools
 )
 readonly HELP_TIPS=(
     "i：安装"
@@ -21,32 +21,27 @@ readonly MAX_ERROR_COUNT=3
 input_count=0
 
 print_help() {
-    for item in "${HELP_TIPS[@]}"
-    do
+    for item in "${HELP_TIPS[@]}"; do
         echo "$item"
     done
 }
 
 install() {
-    for item in "${DEPEND_LIST[@]}"
-    do
-        if ! yum list installed "${item}">/dev/null 2>"1"; then
+    for item in "${DEPEND_LIST[@]}"; do
+        if ! yum list installed "${item}" >/dev/null 2>"1"; then
             sudo yum install -y "${item}"
         fi
     done
-    if [ ! "$(command -v pip3)" ]; then
-        read -r -p "未安装 pip3 是否安装 [y/n]：" is_install
-        if [ "$is_install" == "Y" ] || [ "$is_install" == "y" ]; then
-            /bin/bash -c "$(curl -fsSL ${HOST}/pip3.sh)" -s i
-        fi
-    fi
+
+    wget "${HOST}/package/linux/centos/mkcert-v1.4.4-linux-amd64" -O /usr/local/bin/mkcert
+    chmod +x /usr/local/bin/mkcert
 }
 
 remove() {
-    /bin/bash -c "$(curl -fsSL ${HOST}/pip3.sh)" -s r
-    for item in "${REMOVE_LIST[@]}"
-    do
-        if yum list installed "${item}">/dev/null 2>"1"; then
+    rm /usr/local/bin/mkcert
+
+    for item in "${REMOVE_LIST[@]}"; do
+        if yum list installed "${item}" >/dev/null 2>"1"; then
             sudo yum remove -y "${item}"
         fi
     done
